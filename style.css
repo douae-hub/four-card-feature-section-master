@@ -1,0 +1,129 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing:border-box ;
+}
+
+body{
+    font-family: 'Figtree',sans-serif;
+    background-color: hsl(0, 0%, 98%);/* pour un fond clair */
+}
+.p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px;  
+}
+#txt1{
+    font-weight: 200;
+    font-size: 32px;
+     color: hsl(229, 6%, 66%);
+}
+.p h1{
+    font-size: 32px;
+    font-size: 600;
+    margin-bottom: 15px;
+    margin-top:15px;
+}
+#txt2{
+    color: grey;
+    max-width: 600px;
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: center;
+}
+/* Grille Principale (Version Desktop) */
+.grid-container {
+    display: grid;
+    gap: 30px; /* Espace entre les cartes */
+    max-width: 1110px; /* Largeur maximale de la section */
+    margin: 0 auto; /* Centre toute la grille horizontalement sur ton écran */
+    padding: 20px;
+    /* 3 colonnes de largeur identique */
+    grid-template-columns: repeat(3, 1fr);
+    /* 2 lignes qui s'adaptent automatiquement au contenu */
+    grid-template-rows: auto auto;
+    /* Centre verticalement les colonnes les unes par rapport aux autres */
+    align-items: center; 
+}
+
+/* Sytle de code */
+.card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0px 15px 30px rgba(0,0,0,0.06);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 250px; /* Toutes les cartes auront la même hauteur minimale */
+}
+
+.card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 13px;
+    color: hsl(229, 6%, 66%);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Positionnement de l'icone en bas a droite */
+.icon-wrapper {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.supervisor {
+    grid-column: 1; /* Colonne 1 (Gauche) */
+    grid-row: 1 / span 2; /* S'étale sur les 2 lignes pour flotter au milieu */
+    border-top: 4px solid hsl(180, 62%, 55%);
+}
+
+.team-builder {
+    grid-column: 2; /* Colonne 2 (Milieu) */
+    grid-row: 1; /* Ligne 1 (Haut) */
+    border-top: 4px solid hsl(0, 78%, 62%);
+}
+
+.karma {
+    grid-column: 2; /* Colonne 2 (Milieu) */
+    grid-row: 2; /* Ligne 2 (Bas) */
+    border-top: 4px solid hsl(34, 97%, 64%);
+}
+
+.calculator {
+    grid-column: 3; /* Colonne 3 (Droite) */
+    grid-row: 1 / span 2; /* S'étale sur les 2 lignes pour flotter au milieu */
+    border-top: 4px solid hsl(212, 86%, 64%);
+}
+/* 📱 Version Téléphone (Responsive) */
+@media (max-width: 768px) {
+    
+    /* 1. On transforme la grille en 1 seule colonne */
+    .grid-container {
+        grid-template-columns: 1fr; /* Une seule colonne qui prend toute la largeur */
+        grid-template-rows: auto;    /* Les lignes s'adaptent à la hauteur de chaque carte */
+        padding: 20px;
+        gap: 25px;                  /* Un espace un peu plus petit entre les cartes */
+    }
+
+    /* 2. On réinitialise le placement de CHAQUE carte pour qu'elles se suivent normalement */
+    .supervisor, .team-builder,  .karma, .calculator {
+        grid-column: 1;  /* Tout le monde va dans la colonne 1 */
+        grid-row: auto;  /* Le navigateur les empile automatiquement les unes après les autres */
+        min-height: auto; /* On laisse la hauteur s'adapter naturellement au texte sur mobile */
+    }
+
+    /* 3. On réduit un peu la taille des titres du haut pour que ça rentre bien sur l'écran */
+    #txt1, .p h1 {
+        font-size: 24px;
+    }
+}
